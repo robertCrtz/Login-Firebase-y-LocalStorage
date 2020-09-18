@@ -1,0 +1,101 @@
+<div class="texto mt-1">
+    <button class="btn btn-danger ml-auto" type="button" name="button" (click)="salir()">Cerrar sesión</button>
+    <h1><span class="text text-white">Productos electrónicos</span></h1>
+</div>
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-5">
+
+            <!-- INPUT -->
+            <div class="card mt-2">
+                <div class="card-body">
+                    <form (submit)="addDato(nuevoNombre, nuevaMarca, nuevoModelo, nuevaDescripcion, nuevoPrecio, nuevasUnidades, nuevoTipo)">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nombre del producto" #nuevoNombre>
+                        </div>
+
+                        <div class="form-group">
+                            <input name="marca" class="form-control" placeholder="Marca" #nuevaMarca>
+                        </div>
+
+                        <div class="form-group">
+                            <input name="modelo" class="form-control" placeholder="Modelo" #nuevoModelo>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="descripcion" class="form-control" cols="20" rows="3" placeholder="Descripcion" #nuevaDescripcion></textarea>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" name="precio" class="form-control fix-rounded-right" placeholder="Precio" #nuevoPrecio>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="number" name="unidad" class="form-control" placeholder="Unidades" #nuevasUnidades>
+                        </div>
+
+                        <select class="custom-select form-control" name="tipo" placeholder="tipo" #nuevoTipo>
+                            <option value="" disabled selected>Tipo</option>
+                            <option value="1">Pendrive</option>
+                            <option value="2">Celulares</option>
+                            <option value="3">CPU</option>
+                            <option value="4">Televisor</option>
+                            <option value="1">Luces</option>
+                            <option value="5">HDD</option>
+                            <option value="6">Consolas</option>
+                            <option value="6">Ventiladores</option>
+                            <option value="6">Cables</option>
+                        </select>
+
+                        <button class="btn btn-primary btn-block mt-3">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- LISTAS -->
+        </div>
+        <div class="col-md-7">
+            <div *ngFor="let dato of datos">
+                <div class="card mt-2">
+
+                    <div class="card-header text-center d-flex justify-content-between">
+                        {{ dato.nombre }}
+                        <button class="btn btn-danger btn-sm" (click)="deleteDatos(dato)">
+                            Eliminar
+                        </button>
+                    </div>
+
+
+                    <div class="card-footer">
+                        {{ dato.marca }}
+                    </div>
+
+                    <div class="card-footer">
+                        {{ dato.modelo }}
+                    </div>
+
+                    <div class="card-footer">
+                        {{ dato.descripcion }}
+                    </div>
+
+                    <div class="card-footer">
+                        $ {{ dato.precio }}
+                    </div>
+
+                    <div class="card-footer">
+                        {{ dato.unidad }}
+                    </div>
+
+                    <div class="card-footer">
+                        {{ dato.tipo }}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

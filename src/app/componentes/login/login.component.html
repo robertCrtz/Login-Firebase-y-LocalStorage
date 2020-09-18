@@ -1,0 +1,30 @@
+<div class="texto mt-3">
+    <h1><span class="text text-white">
+    Iniciar Sesión</span></h1>
+</div>
+<div class="centrar">
+    <img src="assets/images3.png" width="200" height="200">
+
+    <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+
+        <div class=" form-group mt-2">
+            <span class="text-danger" *ngIf="loginForm.submitted && loginForm.controls['email'].errors">El correo es obligatorio</span>
+            <label for="exampleInputEmail1 ">Correo Electrónico:</label>
+            <input type="email" class="form-control " name="email" [(ngModel)]="usuario.email" required>
+        </div>
+
+        <div class="form-group">
+            <span class="text-danger" *ngIf="loginForm.submitted && loginForm.controls['password'].errors">La contraseña debe de ser más de 7 letras</span>
+            <label for="exampleInputPassword1">Contraseña:</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="usuario.password" minlength="7">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="recordarme">
+            <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+        </div>
+        <div class="form">
+            <a routerLink="/Registro" class="text text-primary">¿No tienes una cuenta? Registrate!!</a>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 mb-4">Ingresar</button>
+    </form>
+</div>
